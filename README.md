@@ -1,9 +1,9 @@
 <html>
 <body class="book">
   <div id="header">
-    <h1>¡Bienvenid@ a las Damas!</h1>
+    <h1>¡Bienvenid@ a las Damas! (cloudApps-draughts)</h1>
     <div class="details">
-      <span id="author" class="author"><a href="https://github.com/david-rojo">David Rojo(@david-rojo)</a></span><br>
+      <span id="author" class="author"><a href="https://github.com/david-rojo">David Rojo (@david-rojo)</a></span><br>
     </div><br>
     <div id="toc" class="toc">
       <div id="toctitle">Índice</div>
