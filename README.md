@@ -4,7 +4,7 @@
     <h1>¡Bienvenid@ a las Damas!</h1>
     <div class="details">
       <span id="author" class="author"><a href="https://github.com/david-rojo">David Rojo(@david-rojo)</a></span><br>
-    </div>
+    </div><br>
     <div id="toc" class="toc">
       <div id="toctitle">Índice</div>
       <ul class="sectlevel1">
