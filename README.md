@@ -58,7 +58,7 @@
                                   adyacentes en diagonal y hacia adelante</strong>, si ésta esta <strong>vacía</strong>
                                 y la adyacente está <strong>ocupada por un ficha contraria</strong> repitiendo este
                                 mismo movimiento hasta 3 veces desde la nueva casilla. Todas las fichas contrarias
-                                "<strong>saltadas</strong>" en este momvimiento se <strong>retiran del tablero</strong>
+                                "<strong>saltadas</strong>" en este movimiento se <strong>retiran del tablero</strong>
                               </p>
                             </li>
                             <li>
@@ -263,7 +263,7 @@ Mueven las blancas: 61.52
 7 b b b b7
 8b b b b 8
  12345678
-Mueven las negras: 32,43
+Mueven las negras: 32.43
 
  12345678
 1 n n n n1
@@ -296,7 +296,7 @@ Mueven las negras: 32,43
 7 b      7
 8        8
  12345678
-Mueven las negras: 72,83
+Mueven las negras: 72.83
 
  12345678
 1        1
