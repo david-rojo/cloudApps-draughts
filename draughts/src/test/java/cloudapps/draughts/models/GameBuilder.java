@@ -2,19 +2,26 @@ package cloudapps.draughts.models;
 
 public class GameBuilder {
 	
+	private Game game;
 	private Board board;
 	
 	public GameBuilder() {
-		board = new Board();
+		this.board = new Board();
+		this.game = new Game(this.board);
 	}
 	
-//	private void setColor(Game game, Board board) {
-//		if (this.color == Color.BLACK) {
-//			board.put(new Coordinate(7, 0), new Pawn(Color.WHITE));
-//			game.move(new Coordinate(7,0), new Coordinate(6, 1));
-//			board.remove(new Coordinate(6, 1));
-//		}
-//	}
+	public Game build() {
+		return this.game;
+	}
+	
+	public GameBuilder rows(String... rows) {
+		assert rows.length == Coordinate.getDimension();
+		for (int i=0; i<rows.length; i++) {
+			assert rows[i].length() == Coordinate.getDimension();
+			this.setRow(this.board, i, rows[i]);
+		}
+		return this;
+	}
 	
 	private void setRow(Board board, int row, String string) {
 		for (int j = 0; j < string.length(); j++) {
@@ -23,7 +30,7 @@ public class GameBuilder {
 				Piece piece = new Pawn(color);
 				if (Character.isUpperCase(string.charAt(j)))
 					piece = new Draught(color);
-				board.put(new Coordinate(row, j), piece);
+				this.board.put(new Coordinate(row, j), piece);
 			}
 		}	
 	}
@@ -40,26 +47,5 @@ public class GameBuilder {
 			return null;
 		}
 	}
-
-//	public GameBuilder color(Color color) {
-//		this.color = color;
-//		return this;
-//	}
-
-	public GameBuilder rows(String... strings) {
-		assert strings != null;
-		assert strings.length == Coordinate.getDimension();
-		for (int i=0; i<strings.length; i++) {
-			assert strings[i].length() == Coordinate.getDimension();
-			this.setRow(this.board, i, strings[i]);
-		}
-		return this;
-	}
-	
-	public Game build() {
-		Game game = new Game(this.board);
-		return game;
-	}
-
 
 }

@@ -16,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class ConsoleTest {
+class ConsoleTest {
 
 	@Mock
     private BufferedReader bufferedReader;
@@ -25,20 +25,20 @@ public class ConsoleTest {
     private Console console = new Console();
 
     @Test
-    public void testGivenNewConsoleWhenReadLineCorrectStringThenIsCorrect() throws IOException {
+    void testGivenNewConsoleWhenReadLineCorrectStringThenIsCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("1");
         assertThat(this.console.readString(""), is("1"));
     }
 
     @Test
-    public void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsCorrect() throws IOException {
+    void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("1");
         assertThat(this.console.readInt(""), is(1));
     }
 
     @Disabled
     @Test 
-    public void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsInCorrect() throws IOException {
+    void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsInCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("a");
         Assertions.assertThrows(AssertionError.class, () -> {
         	assertThat(this.console.readInt(""), is(1));
@@ -46,14 +46,14 @@ public class ConsoleTest {
     }
 
     @Test
-    public void testGivenNewConsoleWhenReadLineCorrectStringCharThenIsCorrect() throws IOException {
+    void testGivenNewConsoleWhenReadLineCorrectStringCharThenIsCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("a");
         assertThat(this.console.readChar(""), is('a'));
     }
 
     @Disabled
     @Test
-    public void testGivenNewConsoleWhenReadLineCorrectStringCharThenIsInCorrect() throws IOException {
+    void testGivenNewConsoleWhenReadLineCorrectStringCharThenIsInCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("a");
         Assertions.assertThrows(AssertionError.class, () -> {
         	assertThat(this.console.readChar(""), is(1));

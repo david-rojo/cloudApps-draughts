@@ -10,11 +10,10 @@ import cloudapps.draughts.models.GameBuilder;
 import cloudapps.draughts.models.State;
 import cloudapps.draughts.models.StateValue;
 
-public class StartControllerTest {
-
+class StartControllerTest {
 
 	@Test
-	public void testGivenStartControllerWhenStartThenInGameState() {
+	void testGivenStartControllerWhenStartThenInGameState() {
 		Game game = new GameBuilder().build();
 		State state = new State();
 		StartController startController = new StartController(game, state);

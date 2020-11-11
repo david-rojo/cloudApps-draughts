@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class BoardTest {
+class BoardTest {
 
 	private final static int VALID_ORIGIN_COORDINATE_X = 7;
 	private final static int VALID_ORIGIN_COORDINATE_Y = 0;
@@ -36,14 +36,14 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testGivenBoardWhenGetPieceWithNullCoordinateThenGetAssertionError() {
+	void testGivenBoardWhenGetPieceWithNullCoordinateThenGetAssertionError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
 			this.board.getPiece(null);
 		});	
 	}
 	
 	@Test
-	public void testGivenValidCoordinateAndValidPieceThenPutAndGetOk() {
+	void testGivenValidCoordinateAndValidPieceThenPutAndGetOk() {
 		Piece piece = new Pawn(COLOR);
 		this.board.put(originCoordinate, piece);
 		assertThat(this.board.getPiece(originCoordinate), is(notNullValue()));
@@ -52,51 +52,45 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testGivenInvalidCoordinateAndValidPieceThenPutArrayIndexOutOfBoundsError() {
+	void testGivenInvalidCoordinateAndValidPieceThenPutArrayIndexOutOfBoundsError() {
 		Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			this.board.put(invalidCoordinate, new Pawn(COLOR));
 		});		
 	}
 	
 	@Test
-	public void testGivenNullCoordinateThenRemoveAssertionError() {
+	void testGivenNullCoordinateThenRemoveAssertionError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
 			this.board.remove(null);
 		});		
 	}
 	
 	@Test
-	public void testGivenInvalidCoordinateThenRemoveArrayIndexOutOfBoundsError() {
+	void testGivenInvalidCoordinateThenRemoveArrayIndexOutOfBoundsError() {
 		Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			this.board.remove(invalidCoordinate);
 		});		
 	}
 	
 	@Test
-	public void testGivenValidCoordinateAndValidPieceThenRemoveOk() {
+	void testGivenValidCoordinateAndValidPieceThenRemoveOk() {
 		Piece piece = new Pawn(COLOR);
 		this.board.put(originCoordinate, piece);
-		assertThat(this.board.getPiece(originCoordinate), is(notNullValue()));
-		assertThat(this.board.getPiece(originCoordinate), is(piece));
-		assertThat(this.board.getPiece(originCoordinate).getColor(), is(COLOR));
 		this.board.remove(originCoordinate);
 		assertThat(this.board.getPiece(originCoordinate), is(nullValue()));
 	}
 	
 	@Test
-	public void testGivenNullOriginCoordinateThenMoveAssertionError() {
+	void testGivenNullOriginCoordinateThenMoveAssertionError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
 			this.board.move(null, originCoordinate);
 		});	
 	}
 	
 	@Test
-	public void testGivenValidOriginValidTargetThenMoveOk() {
+	void testGivenValidOriginValidTargetThenMoveOk() {
 		Piece piece = new Pawn(COLOR);
 		this.board.put(originCoordinate, piece);
-		assertThat(this.board.getPiece(originCoordinate), is(notNullValue()));
-		assertThat(this.board.getPiece(originCoordinate), is(piece));
-		assertThat(this.board.getPiece(originCoordinate).getColor(), is(COLOR));
 		this.board.move(originCoordinate, targetCoordinate);
 		Piece movedPiece = this.board.getPiece(targetCoordinate);
 		assertThat(movedPiece, is(notNullValue()));
@@ -105,7 +99,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void testGivenValidOriginValidTargetWith1PieceThenGetBetweenDiagonalPieces1Piece() {
+	void testGivenValidOriginValidTargetWith1PieceThenGetBetweenDiagonalPieces1Piece() {
 		Piece piece = new Pawn(COLOR);
 		this.board.put(new Coordinate(6,1), piece);
 		List<Piece> pieces = this.board.getBetweenDiagonalPieces(originCoordinate, targetCoordinate);
@@ -115,13 +109,13 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testGivenValidOriginValidTargetWithoutPiecesThenGetBetweenDiagonalPiecesEmpty() {
+	void testGivenValidOriginValidTargetWithoutPiecesThenGetBetweenDiagonalPiecesEmpty() {
 		List<Piece> pieces = this.board.getBetweenDiagonalPieces(originCoordinate, targetCoordinate);
 		assertThat(pieces.isEmpty(), is(true));
 	}
 	
 	@Test
-	public void testGivenValidOriginValidTargetWith1PieceThenGetAmountBetweenDiagonalPieces1() {
+	void testGivenValidOriginValidTargetWith1PieceThenGetAmountBetweenDiagonalPieces1() {
 		Piece piece = new Pawn(COLOR);
 		this.board.put(new Coordinate(6,1), piece);
 		int pieces = this.board.getAmountBetweenDiagonalPieces(originCoordinate, targetCoordinate);
@@ -130,7 +124,7 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testGivenValidOriginValidTargetWithoutPiecesThenGetAmountBetweenDiagonalPieces0() {
+	void testGivenValidOriginValidTargetWithoutPiecesThenGetAmountBetweenDiagonalPieces0() {
 		int pieces = this.board.getAmountBetweenDiagonalPieces(originCoordinate, targetCoordinate);
 		assertThat(pieces, is(notNullValue()));
 		assertThat(pieces, is(0));

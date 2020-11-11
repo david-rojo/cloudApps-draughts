@@ -9,33 +9,32 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class GameBuilderTest {
+class GameBuilderTest {
 	
-	private GameBuilder gameBuilder;
+	private Game game;
 	
-	@BeforeEach
-	public void before() {
-		this.gameBuilder = new GameBuilder();
+	private static Game game(String... rows) {
+		return new GameBuilder().rows(rows).build();
 	}
 	
 	@Test
-	public void testGivenGameBuilderWhenIncorrectRowsNumberThenError() {
+	void testGivenGameBuilderWhenIncorrectRowsNumberThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			this.gameBuilder.rows(
+			this.game = game(
 					"        ",
 					"        ",
 					"        ",
 					"        ",
 					"        ",
 					"        ",
-					"        ").build();
+					"        ");
 		});		
 	}
 	
 	@Test
-	public void testGivenGameBuilderWhenIncorrectRowsLengthThenError() {
+	void testGivenGameBuilderWhenIncorrectRowsLengthThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			this.gameBuilder.rows(
+			this.game = game(
 					"         ",
 					"       ",
 					"        ",
@@ -43,29 +42,13 @@ public class GameBuilderTest {
 					"        ",
 					"        ",
 					"        ",
-					"        ").build();
-		});	
-	}
-
-	@Disabled
-	@Test
-	public void testGivenGameBuilderWhenIncorrectCharactersThenError() {
-		Assertions.assertThrows(AssertionError.class, () -> {
-			this.gameBuilder.rows(
-					"        ",
-					"        ",
-					"        ",
-					"        ",
-					" x      ",
-					"        ",
-					"        ",
-					"        ").build();
+					"        ");
 		});	
 	}
 	
 	@Test
-	public void testGivenGameBuilderWhenCorrectRowsThenOk() {
-		Game game = this.gameBuilder.rows(
+	void testGivenGameBuilderWhenCorrectRowsThenOk() {
+		this.game = game(
 				"    n   ",
 				"        ",
 				"        ",
@@ -73,13 +56,11 @@ public class GameBuilderTest {
 				"        ",
 				"        ",
 				"        ",
-				"       b").build();
+				"       b");
 		assertThat(game.getColor(new Coordinate(5,0)), is(nullValue()));
 		assertThat(game.getColor(new Coordinate(0, 4)), is(Color.BLACK));
 		assertThat(game.getColor(new Coordinate(7, 7)), is(Color.WHITE));
 		assertThat(game.getColor(new Coordinate(5,5)), is(nullValue()));		
-	}
-	
-	
+	}	
 
 }

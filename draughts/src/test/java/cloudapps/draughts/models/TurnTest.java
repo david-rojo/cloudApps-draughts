@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TurnTest {
+class TurnTest {
 
 	private Turn turn;
 
@@ -16,18 +16,18 @@ public class TurnTest {
 	}
 
 	@Test
-	public void testGivenNewTurnIsWhitesTurn() {
+	void testGivenNewTurnIsWhitesTurn() {
 		assertThat(turn.getColor(), is(Color.WHITE));
 	}
 	
 	@Test
-	public void testGivenNewTurnWhenChangeTurnThenIsOtherTurn() {
+	void testGivenNewTurnWhenChangeTurnThenIsOtherTurn() {
 		this.turn.change();
 		assertThat(turn.getColor(), is(Color.BLACK));
 	}
 
 	@Test
-	public void testGivenNewTurnWhenChangeTurnTwoTimesThenIsTheSameTurn() {
+	void testGivenNewTurnWhenChangeTurnTwoTimesThenIsTheSameTurn() {
 		this.turn.change();
 		this.turn.change();
 		assertThat(turn.getColor(), is(Color.WHITE));

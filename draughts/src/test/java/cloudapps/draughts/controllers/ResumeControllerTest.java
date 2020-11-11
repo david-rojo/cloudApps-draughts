@@ -10,10 +10,10 @@ import cloudapps.draughts.models.Game;
 import cloudapps.draughts.models.State;
 import cloudapps.draughts.models.StateValue;
 
-public class ResumeControllerTest {
+class ResumeControllerTest {
 
 	@Test
-    public void givenResumeControllerWhenResumeGameMoveToInitialStateThenOk() {
+    void givenResumeControllerWhenResumeGameMoveToInitialStateThenOk() {
         Game game = new Game();
         State state = new State();
         ResumeController resumeController = new ResumeController(game, state);
@@ -27,7 +27,7 @@ public class ResumeControllerTest {
     }
 	
 	@Test
-    public void givenResumeControllerWhenResumeGameExitNextThenError() {
+    void givenResumeControllerWhenResumeGameExitNextThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
 			Game game = new Game();
 	        State state = new State();

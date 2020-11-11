@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CoordinateTest {
+class CoordinateTest {
 
 	private final static int VALID_ORIGIN_COORDINATE_X = 0;
 	private final static int VALID_ORIGIN_COORDINATE_Y = 7;
@@ -28,22 +28,22 @@ public class CoordinateTest {
 	}
 	
 	@Test
-	public void testFirstCoordinateThenGetIsFirstOk() {
+	void testFirstCoordinateThenGetIsFirstOk() {
 		assertThat(originCoordinate.isFirst(), is(true));
 	}
 	
 	@Test
-	public void testNotFirstCoordinateThenGetIsFirstKo() {
+	void testNotFirstCoordinateThenGetIsFirstKo() {
 		assertThat(targetCoordinate.isFirst(), is(false));
 	}
 	
 	@Test
-	public void testLastCoordinateThenGetIsLastOk() {
+	void testLastCoordinateThenGetIsLastOk() {
 		assertThat(targetCoordinate.isLast(), is(true));
 	}
 	
 	@Test
-	public void testNotLastCoordinateThenGetIsLastKo() {
+	void testNotLastCoordinateThenGetIsLastKo() {
 		assertThat(originCoordinate.isLast(), is(false));
 	}
 }
