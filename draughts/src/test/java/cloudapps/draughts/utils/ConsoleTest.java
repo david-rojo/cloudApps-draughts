@@ -51,7 +51,6 @@ class ConsoleTest {
         assertThat(this.console.readChar(""), is('a'));
     }
 
-    @Disabled
     @Test
     void testGivenNewConsoleWhenReadLineCorrectStringCharThenIsInCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("a");
