@@ -28,7 +28,7 @@ $ java -jar target/draughts-1.0-SNAPSHOT.jar
 from current folder draughts:
 
 ```
-mvn test
+$ mvn test
 ```
 
 ### Author
