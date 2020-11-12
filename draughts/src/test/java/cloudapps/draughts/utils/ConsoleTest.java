@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -34,15 +33,6 @@ class ConsoleTest {
     void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsCorrect() throws IOException {
         when(this.bufferedReader.readLine()).thenReturn("1");
         assertThat(this.console.readInt(""), is(1));
-    }
-
-    @Disabled
-    @Test 
-    void testGivenNewConsoleWhenReadLineCorrectStringIntegerThenIsInCorrect() throws IOException {
-        when(this.bufferedReader.readLine()).thenReturn("a");
-        Assertions.assertThrows(AssertionError.class, () -> {
-        	assertThat(this.console.readInt(""), is(1));
-		});
     }
 
     @Test

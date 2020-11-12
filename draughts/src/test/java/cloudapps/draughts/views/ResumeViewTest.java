@@ -2,9 +2,9 @@ package cloudapps.draughts.views;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,13 +32,12 @@ class ResumeViewTest {
 	@BeforeEach
 	public void initMocks() {
         resumeController = new ResumeController(new Game(), new State());
-		MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.openMocks(this);
 	}
     
-	@Disabled
     @Test
     void testGivenResumeViewWhenContinueThenClear(){
-        when(yesNoDialog.read("¿Queréis jugar otra?")).thenReturn(true);
+        when(yesNoDialog.read(anyString())).thenReturn(true);
 		resumeView.interact(resumeController);
 		verify(resumeController).reset();
     }
