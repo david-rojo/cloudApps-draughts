@@ -19,6 +19,8 @@ import cloudapps.draughts.utils.Console;
 @ExtendWith(MockitoExtension.class)
 class PlayViewTest {
 
+	private final static String BLACKS_MOVES_PROMPT = "Mueven las negras: ";
+	
 	@Mock
     PlayController playController;
 
@@ -36,33 +38,44 @@ class PlayViewTest {
     @Test
     void testGivenPlayViewWhenCorrectFormatThenOk() {
         when(playController.getColor()).thenReturn(Color.BLACK);
-        when(console.readString("Mueven las negras: ")).thenReturn("32.41");
+        when(console.readString(BLACKS_MOVES_PROMPT))
+        	.thenReturn("44.53");
         playView.interact(playController);
-        verify(playController).move(new Coordinate(2, 1), new Coordinate(3, 0));
+        verify(playController)
+        	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
 
     @Test
     void testGivenPlayViewWhenInteractWithEmptyThenError() {
         when(playController.getColor()).thenReturn(Color.BLACK);
-        when(console.readString("Mueven las negras: ")).thenReturn("").thenReturn("32.41");
+        when(console.readString(BLACKS_MOVES_PROMPT))
+        	.thenReturn("")
+        	.thenReturn("44.53");
         playView.interact(playController);
-        verify(playController).move(new Coordinate(2, 1), new Coordinate(3, 0));
+        verify(playController)
+        	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
 
     @Test
     void testGivenPlayViewWhenInteractWithBadFormatThenError() {
         when(playController.getColor()).thenReturn(Color.BLACK);
-        when(console.readString("Mueven las negras: ")).thenReturn("a3.42").thenReturn("32.41");
+        when(console.readString(BLACKS_MOVES_PROMPT))
+        	.thenReturn("c4.53")
+        	.thenReturn("44.53");
         playView.interact(playController);
-        verify(playController).move(new Coordinate(2, 1), new Coordinate(3, 0));
+        verify(playController)
+        	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
 
     @Test
-    void testGivenPlayViewWhenInteractWithBadRangeThenError() {
+    void testGivenPlayViewWhenInteractWithRangeOutOfBoundsThenError() {
         when(playController.getColor()).thenReturn(Color.BLACK);
-        when(console.readString("Mueven las negras: ")).thenReturn("93.49").thenReturn("32.41");
+        when(console.readString(BLACKS_MOVES_PROMPT))
+        	.thenReturn("103.411")
+        	.thenReturn("32.41");
         playView.interact(playController);
-        verify(playController).move(new Coordinate(2, 1), new Coordinate(3, 0));
+        verify(playController)
+        	.move(new Coordinate(2, 1), new Coordinate(3, 0));
     }
     
 }
