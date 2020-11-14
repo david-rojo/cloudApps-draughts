@@ -23,7 +23,7 @@ $ mvn package
 $ java -jar target/draughts-1.0-SNAPSHOT.jar
 ```
 
-### 4. Run tests
+### 4. Run tests (JUnit5)
 
 from current folder draughts:
 
