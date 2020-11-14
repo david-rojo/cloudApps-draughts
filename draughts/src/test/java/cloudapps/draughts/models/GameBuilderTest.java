@@ -11,14 +11,11 @@ class GameBuilderTest {
 	
 	private Game game;
 	
-	private static Game game(String... rows) {
-		return new GameBuilder().rows(rows).build();
-	}
 	
 	@Test
 	void testGivenGameBuilderWhenIncorrectRowsNumberThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			this.game = game(
+			this.game = GameBuilder.game(
 					"        ",
 					"        ",
 					"        ",
@@ -32,7 +29,7 @@ class GameBuilderTest {
 	@Test
 	void testGivenGameBuilderWhenIncorrectRowsLengthThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			this.game = game(
+			this.game = GameBuilder.game(
 					"         ",
 					"       ",
 					"        ",
@@ -46,7 +43,7 @@ class GameBuilderTest {
 	
 	@Test
 	void testGivenGameBuilderWhenCorrectRowsThenOk() {
-		this.game = game(
+		this.game = GameBuilder.game(
 				"    n   ",
 				"        ",
 				"        ",

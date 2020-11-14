@@ -5,6 +5,10 @@ public class GameBuilder {
 	private Game game;
 	private Board board;
 	
+	public static Game game(String... rows) {
+		return new GameBuilder().rows(rows).build();
+	}
+	
 	public GameBuilder() {
 		this.board = new Board();
 		this.game = new Game(this.board);
