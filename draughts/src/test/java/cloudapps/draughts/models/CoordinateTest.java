@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -110,6 +111,34 @@ class CoordinateTest {
 		for (String input : Arrays.asList("00", "99", "29")) {
 			assertNull(Coordinate.getInstance(input));
 		}
+	}
+	
+	@Test
+	void testGetInstanceWhenCoordinateIsInRangeThenOk() {
+		assertThat(Coordinate.getInstance("12"), is(new Coordinate(0, 1)));
+		assertThat(Coordinate.getInstance("28"), is(new Coordinate(1, 7)));
+		assertThat(Coordinate.getInstance("33"), is(new Coordinate(2, 2)));		
+	}
+	
+	@Test
+	void testGetInstanceWhenInputIsNotParseableIntThenNull() {
+		assertNull(Coordinate.getInstance("bn"));
+	}
+	
+	@Test
+	void testDirectionsWhenDiagonalThenOk() {		
+		assertThat(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("62")), is(Direction.NW));
+		assertThat(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("55")), is(Direction.NE));
+		assertThat(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("11")), is(Direction.SW));
+		assertThat(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("17")), is(Direction.SE));
+	}
+	
+	@Test
+	void testDirectionsWhenUpOrDownThenError() {
+		assertNull(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("34")));
+		assertNull(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("43")));
+		assertNull(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("54")));
+		assertNull(Coordinate.getInstance("44").getDirection(Coordinate.getInstance("45")));
 	}
 	
 	
