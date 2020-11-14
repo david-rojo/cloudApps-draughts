@@ -23,7 +23,7 @@ class ResumeControllerTest {
     }
 	
 	@Test
-    void givenResumeControllerWhenResumeGameMoveToInitialStateThenOk() {
+    void testGivenResumeControllerWhenResumeGameMoveToInitialStateThenOk() {
         resumeController.next();
         resumeController.next();
         resumeController.reset();
@@ -31,7 +31,7 @@ class ResumeControllerTest {
     }
 	
 	@Test
-    void givenResumeControllerWhenResumeGameExitNextThenError() {
+    void testGivenResumeControllerWhenResumeGameExitNextThenError() {
 		Assertions.assertThrows(AssertionError.class, () -> {
 	        resumeController.next();
 	        resumeController.next();

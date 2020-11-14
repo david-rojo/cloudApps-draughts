@@ -17,28 +17,28 @@ class CoordinateTest {
 	
 	@BeforeEach
 	public void before() {
-		originCoordinate = new Coordinate(0, 7);
-		targetCoordinate = new Coordinate(7, 0);
+		this.originCoordinate = new Coordinate(0, 7);
+		this.targetCoordinate = new Coordinate(7, 0);
 	}
 	
 	@Test
 	void testFirstCoordinateThenGetIsFirstThenTrue() {
-		assertThat(originCoordinate.isFirst(), is(true));
+		assertThat(this.originCoordinate.isFirst(), is(true));
 	}
 	
 	@Test
 	void testNotFirstCoordinateThenGetIsFirstThenFalse() {
-		assertThat(targetCoordinate.isFirst(), is(false));
+		assertThat(this.targetCoordinate.isFirst(), is(false));
 	}
 	
 	@Test
 	void testLastCoordinateThenGetIsLastThenTrue() {
-		assertThat(targetCoordinate.isLast(), is(true));
+		assertThat(this.targetCoordinate.isLast(), is(true));
 	}
 	
 	@Test
 	void testNotLastCoordinateThenGetIsLastThenFalse() {
-		assertThat(originCoordinate.isLast(), is(false));
+		assertThat(this.originCoordinate.isLast(), is(false));
 	}
 	
 	@Test
