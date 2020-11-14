@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +14,11 @@ class CoordinateTest {
 
 	private Coordinate originCoordinate;
 	private Coordinate targetCoordinate;
-	private Coordinate invalidCoordinate;
-	private final static Color COLOR = Color.WHITE;
 	
 	@BeforeEach
 	public void before() {
 		originCoordinate = new Coordinate(0, 7);
 		targetCoordinate = new Coordinate(7, 0);
-		invalidCoordinate = new Coordinate(8, 8);
 	}
 	
 	@Test
