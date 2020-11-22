@@ -2,6 +2,8 @@ package cloudapps.draughts.views;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,6 +78,15 @@ class PlayViewTest {
         playView.interact(playController);
         verify(playController)
         	.move(new Coordinate(2, 1), new Coordinate(3, 0));
+    }
+    
+    @Test
+    void testGivenPlayViewWhenInteractWithCancelOperationThenShouldCancel() {
+    	when(playController.getColor()).thenReturn(Color.BLACK);
+    	when(console.readString(anyString())).thenReturn("-1");
+
+    	playView.interact(playController);
+    	verify(playController).cancel();
     }
     
 }
