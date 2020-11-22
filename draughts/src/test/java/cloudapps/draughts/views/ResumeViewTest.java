@@ -41,4 +41,11 @@ class ResumeViewTest {
 		resumeView.interact(resumeController);
 		verify(resumeController).reset();
     }
+    
+    @Test
+    void testGivenResumeViewWhenNotContinueThenNext(){
+        when(yesNoDialog.read(anyString())).thenReturn(false);
+		resumeView.interact(resumeController);
+		verify(resumeController).next();
+    }
 }
