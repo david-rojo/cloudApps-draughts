@@ -1,9 +1,8 @@
 package cloudapps.draughts.views;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +29,7 @@ class PlayViewTest {
     Console console;
 
     @InjectMocks
-    PlayView playView;
+    View playView;
 
     @BeforeEach
     public void initMocks() {
@@ -42,7 +41,7 @@ class PlayViewTest {
         when(playController.getColor()).thenReturn(Color.BLACK);
         when(console.readString(BLACKS_MOVES_PROMPT))
         	.thenReturn("44.53");
-        playView.interact(playController);
+        playView.visit(playController);
         verify(playController)
         	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
@@ -53,7 +52,7 @@ class PlayViewTest {
         when(console.readString(BLACKS_MOVES_PROMPT))
         	.thenReturn("")
         	.thenReturn("44.53");
-        playView.interact(playController);
+        playView.visit(playController);
         verify(playController)
         	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
@@ -64,7 +63,7 @@ class PlayViewTest {
         when(console.readString(BLACKS_MOVES_PROMPT))
         	.thenReturn("c4.53")
         	.thenReturn("44.53");
-        playView.interact(playController);
+        playView.visit(playController);
         verify(playController)
         	.move(new Coordinate(3, 3), new Coordinate(4, 2));
     }
@@ -75,7 +74,7 @@ class PlayViewTest {
         when(console.readString(BLACKS_MOVES_PROMPT))
         	.thenReturn("103.411")
         	.thenReturn("32.41");
-        playView.interact(playController);
+        playView.visit(playController);
         verify(playController)
         	.move(new Coordinate(2, 1), new Coordinate(3, 0));
     }
@@ -85,7 +84,7 @@ class PlayViewTest {
     	when(playController.getColor()).thenReturn(Color.BLACK);
     	when(console.readString(anyString())).thenReturn("-1");
 
-    	playView.interact(playController);
+    	playView.visit(playController);
     	verify(playController).cancel();
     }
     

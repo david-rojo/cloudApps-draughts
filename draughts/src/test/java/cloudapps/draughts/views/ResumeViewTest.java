@@ -27,7 +27,7 @@ class ResumeViewTest {
 	YesNoDialog yesNoDialog;
 
     @InjectMocks
-    ResumeView resumeView;
+    View resumeView;
     
 	@BeforeEach
 	public void initMocks() {
@@ -38,14 +38,14 @@ class ResumeViewTest {
     @Test
     void testGivenResumeViewWhenContinueThenClear(){
         when(yesNoDialog.read(anyString())).thenReturn(true);
-		resumeView.interact(resumeController);
+		resumeView.visit(resumeController);
 		verify(resumeController).reset();
     }
     
     @Test
     void testGivenResumeViewWhenNotContinueThenNext(){
         when(yesNoDialog.read(anyString())).thenReturn(false);
-		resumeView.interact(resumeController);
+		resumeView.visit(resumeController);
 		verify(resumeController).next();
     }
 }
