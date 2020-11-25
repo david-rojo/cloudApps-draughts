@@ -76,20 +76,6 @@ class GameTest {
 	}
 	
 	@Test
-	void testWhenUnblockedPawnThenUnblockedGame() {
-		this.game = GameBuilder.game(
-				"        ",
-				"        ",
-				"        ",
-				"        ",
-				"        ",
-				"        ",
-				" n      ",
-				"b       ");		
-		assertFalse(this.game.isBlocked());
-	}
-	
-	@Test
 	void testWhenBlockedDraughtThenBlockedGame() {
 		this.game = GameBuilder.game(
 				"        ",
@@ -101,20 +87,6 @@ class GameTest {
 				"        ",
 				"        ");		
 		assertTrue(this.game.isBlocked());
-	}
-	
-	@Test
-	void testWhenUnblockedDraughtThenUnblockedGame() {
-		this.game = GameBuilder.game(
-				"        ",
-				"     n  ",
-				"  n n   ",
-				"   B    ",
-				"  n n   ",
-				" n   n  ",
-				"        ",
-				"        ");		
-		assertFalse(this.game.isBlocked());
 	}
 	
 	@Test

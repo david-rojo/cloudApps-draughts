@@ -11,10 +11,5 @@ public enum Error {
     COLLEAGUE_EATING,
     TOO_MUCH_ADVANCED,
     TOO_MUCH_EATINGS,
-    TOO_MUCH_JUMPS,
-    NULL;
-	
-    public boolean isNull(){
-		return this == Error.NULL;
-	}
+    TOO_MUCH_JUMPS;
 }

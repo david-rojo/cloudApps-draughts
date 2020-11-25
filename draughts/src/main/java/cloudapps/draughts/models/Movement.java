@@ -9,13 +9,11 @@ public class Movement {
 	private Turn turn;
 	private Coordinate[] coordinates;
 	private int pair;
-	private MovementChecker movementChecker;
 	
 	Movement(Board board, Turn turn, Coordinate... coordinates) {
 		this.board = board;
 		this.turn = turn;
 		this.coordinates = coordinates;
-		this.movementChecker = new MovementChecker(this.board, this.turn);
 	}
 	
 	Board getBoard() {
@@ -39,7 +37,7 @@ public class Movement {
 		List<Coordinate> removedCoordinates = new ArrayList<Coordinate>();
 		List<Piece> removedPieces = new ArrayList<Piece>();
 		do {
-			error = movementChecker.check(this);
+			error = new MovementChecker().check(this);
 			if (error == null) {
 				this.pairMove(removedCoordinates, removedPieces);
 				this.pair++;
@@ -62,7 +60,7 @@ public class Movement {
 	}
 	
 	private void pairMove(List<Coordinate> removedCoordinates, List<Piece> removedPieces) {
-		Coordinate forRemoving = this.getBetweenDiagonalPiece(pair, coordinates);
+		Coordinate forRemoving = this.getBetweenDiagonalPiece(coordinates);
 		if (forRemoving != null) {
 			removedCoordinates.add(0, forRemoving);
 			removedPieces.add(this.board.getPiece(forRemoving));
@@ -84,7 +82,7 @@ public class Movement {
 		}
 	}
 	
-	private Coordinate getBetweenDiagonalPiece(int pair, Coordinate... coordinates) {
+	private Coordinate getBetweenDiagonalPiece(Coordinate... coordinates) {
 		assert coordinates[pair].isOnDiagonal(coordinates[pair + 1]);
 		List<Coordinate> betweenCoordinates = coordinates[pair].getBetweenDiagonalCoordinates(coordinates[pair + 1]);
 		if (betweenCoordinates.isEmpty())

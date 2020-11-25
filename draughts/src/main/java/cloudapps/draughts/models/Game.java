@@ -63,7 +63,7 @@ public class Game {
 								this.board,
 								this.turn,
 								coordinate, target).move();
-				return error.isNull();
+				return !(error == null);
 			}
 		}
 		return true;

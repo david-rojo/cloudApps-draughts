@@ -10,7 +10,7 @@ public abstract class MovementCheck {
 
 	protected Error nextMovement(Movement movement) {
 		if (this.nextMovementCheckHandler == null) {
-			return Error.NULL;
+			return null;
 		}
 		return this.nextMovementCheckHandler.check(movement);
 	}

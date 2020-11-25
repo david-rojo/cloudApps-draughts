@@ -18,7 +18,7 @@ public class CorrectMovementCheck extends MovementCheck {
 		List<Piece> betweenDiagonalPieces = board.getBetweenDiagonalPieces(coordinates[pair], coordinates[pair + 1]);
         Error error = board.getPiece(coordinates[pair]).isCorrectMovement(betweenDiagonalPieces, pair, coordinates);
 
-        if (error.isNull()) {
+        if (error != null) {
             return error;
         }
 
