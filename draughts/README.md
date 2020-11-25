@@ -1,4 +1,4 @@
-# **Draughts refactoring**
+# **Draughts**
 
 Read [documentation](../README.md) first please
 
