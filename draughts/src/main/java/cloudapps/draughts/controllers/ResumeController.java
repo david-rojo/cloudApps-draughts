@@ -2,6 +2,7 @@ package cloudapps.draughts.controllers;
 
 import cloudapps.draughts.models.Game;
 import cloudapps.draughts.models.State;
+import cloudapps.draughts.views.View;
 
 public class ResumeController extends InteractorController {
 
@@ -18,10 +19,13 @@ public class ResumeController extends InteractorController {
 		this.game.reset();
 	}
 
-    @Override
-	public void accept(InteractorControllersVisitor controllersVisitor) {
-		assert controllersVisitor != null;
-		controllersVisitor.visit(this);
+	@Override
+	public void control() {
+        if (new View().playAgain())
+            this.reset();
+        else
+            this.next();
+		
 	}
 
 }
