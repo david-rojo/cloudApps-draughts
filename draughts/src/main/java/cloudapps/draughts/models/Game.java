@@ -57,10 +57,15 @@ public class Game {
 	}
 
 	private boolean isBlocked(Coordinate coordinate) {
-		for (int i = 1; i <= 2; i++)
-			for (Coordinate target : coordinate.getDiagonalCoordinates(i))
-				if (new MovementChecker(this.board, this.turn).isCorrectPairMove(0, coordinate, target) == null)
-					return false;
+		for (int i = 1; i <= 2; i++) {
+			for (Coordinate target : coordinate.getDiagonalCoordinates(i)) {
+				Error error = new Movement(
+								this.board,
+								this.turn,
+								coordinate, target).move();
+				return error.isNull();
+			}
+		}
 		return true;
 	}
 
